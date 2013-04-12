@@ -276,8 +276,11 @@ urlpatterns = patterns('',
     url(r'^(?P<team_slug>[\w_-]+)/(?P<project_id>[\w_-]+)/alerts/(?P<alert_id>\d+)/resolve/$', alerts.resolve_alert,
         name='sentry-resolve-alert'),
     url(r'^(?P<team_slug>[\w_-]+)/(?P<project_id>[\w_-]+)/stream/$', groups.group_list),
+    url(r'^(?P<team_slug>[\w_-]+)/(?P<project_id>[\w_-]+)/dashboard/$', groups.dashboard_project,
+        name='sentry-project-dashboard'),
     url(r'^(?P<team_slug>[\w_-]+)/(?P<project_id>[\w_-]+)/$', groups.group_list,
         name='sentry-stream'),
+
 
     url(r'^(?P<team_slug>[\w_-]+)/$', groups.dashboard,
         name='sentry'),

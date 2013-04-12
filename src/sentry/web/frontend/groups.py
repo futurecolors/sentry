@@ -227,6 +227,19 @@ def dashboard(request, team):
 
 @login_required
 @has_access
+def dashboard_project(request, team, project):
+    project_list = list(Project.objects.filter(team=team))
+
+    return render_to_response('sentry/dashboard_project.html', {
+        'team': team,
+        'project_list': project_list,
+        'project': project,
+        'SECTION': 'events',
+    }, request)
+
+
+@login_required
+@has_access
 def search(request, team, project):
     query = request.GET.get('q')
 
