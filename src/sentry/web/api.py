@@ -572,7 +572,7 @@ def get_group_trends(request, team=None, project=None):
     minutes = int(request.REQUEST.get('minutes', 15))
     limit = min(100, int(request.REQUEST.get('limit', 10)))
 
-    if not team and project:
+    if project:
         project_list = [project]
     else:
         project_list = Project.objects.get_for_user(request.user, team=team)
@@ -615,7 +615,7 @@ def get_new_groups(request, team=None, project=None):
     minutes = int(request.REQUEST.get('minutes', 15))
     limit = min(100, int(request.REQUEST.get('limit', 10)))
 
-    if not team and project:
+    if project:
         project_list = [project]
     else:
         project_list = Project.objects.get_for_user(request.user, team=team)
